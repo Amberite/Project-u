@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(SwipeController))]
+[RequireComponent(typeof(DrawController))]
 public class InputController : MonoBehaviour
 	{
 
-	public SwipeController swipeController;
-	public DrawController drawController;
+	SwipeController swipeController;
+	DrawController drawController;
+
+	void Start()
+		{
+		swipeController = GetComponent<SwipeController>();
+		drawController = GetComponent<DrawController>();
+		}
 
 	private enum InputMode
 		{

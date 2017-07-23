@@ -5,41 +5,64 @@ using UnityEngine;
 public class SwipeTest : MonoBehaviour {
 
 	public SwipeController swipeController;
-	private Vector3 desiredPosition;
+	
+	[SerializeField]
+	private PlayerMovement pm;
 
-
-	void OnDrawGizmosSelected()
-		{
-		// draw dzRadious gizmo
-		Gizmos.color = Color.red;
-		Gizmos.DrawWireSphere(this.transform.position, swipeController.dzRadious / 80);
-
-		}
 
 	// Update is called once per frame
 	void Update () {
-		if (swipeController.SwipeLeft)
-			{
-			desiredPosition += Vector3.left;
-			Debug.Log("Swipe left");
-			}
-		else if (swipeController.SwipeRight)
-			{
-			desiredPosition += Vector3.right;
-			Debug.Log("Swipe right");
-			}
-		else if (swipeController.SwipeUp)
-			{
-			desiredPosition += Vector3.up;
-			Debug.Log("Swipe up");
-			}
-		else if (swipeController.SwipeDown)
-			{
-			desiredPosition += Vector3.down;
-			Debug.Log("Swipe down");
-			}
 
-		gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, desiredPosition, 3f * Time.deltaTime);
+		if (pm.Agent.isStopped && pm.Agent.isActiveAndEnabled)
+			{
+
+			if (swipeController.SwipeLeft)
+				{
+				if (pm.CurrentNode.wNode != null)
+					{
+					pm.MoveToNode(pm.CurrentNode.wNode);
+					}
+				else
+					{
+					Debug.Log("Swiped: Can't go west, no link");
+					}
+
+				}
+			else if (swipeController.SwipeRight)
+				{
+				if (pm.CurrentNode.eNode != null)
+					{
+					pm.MoveToNode(pm.CurrentNode.eNode);
+					}
+				else
+					{
+					Debug.Log("Swiped: Can't go east, no link");
+					}
+				}
+			else if (swipeController.SwipeUp)
+				{
+				if (pm.CurrentNode.nNode != null)
+					{
+					pm.MoveToNode(pm.CurrentNode.nNode);
+					}
+				else
+					{
+					Debug.Log("Swiped: Can't go north, no link");
+					}
+				}
+			else if (swipeController.SwipeDown)
+				{
+				if (pm.CurrentNode.sNode != null)
+					{
+					pm.MoveToNode(pm.CurrentNode.sNode);
+					}
+				else
+					{
+					Debug.Log("Swiped: Can't go south, no link");
+					}
+				}
+
+			}
 
 		if (swipeController.Tap)
 		{
