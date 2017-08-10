@@ -1529,6 +1529,7 @@ GameObject:
   - component: {fileID: 1825549216}
   - component: {fileID: 1825549215}
   - component: {fileID: 1825549214}
+  - component: {fileID: 1825549218}
   m_Layer: 0
   m_Name: Input
   m_TagString: Untagged
@@ -1548,7 +1549,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 1216430725321940, guid: 6c8186a4282552d40a357017fecf53f4, type: 2}
-  minLength: 0.1
+  recorder: {fileID: 1825549218}
+  currentDrawPosition: {x: 0, y: 0, z: 0}
+  minLength: 0.01
 --- !u!114 &1825549215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,7 +1575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e409364d830e244a8070362606d69cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputMode: 1
+  inputMode: 2
 --- !u!4 &1825549217
 Transform:
   m_ObjectHideFlags: 0
@@ -1586,6 +1589,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1825549218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1825549213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5cd06837eb60947be212c2af1d0007, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1958336309
 Prefab:
   m_ObjectHideFlags: 0
